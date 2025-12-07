@@ -1,0 +1,27 @@
+.bg {
+  
+  background-color: #f9c49a;
+}
+.bgImage {
+  background-color: #ececec;
+}
+#navbar {
+  transition: transform 0.5s ease-in-out;
+}
+#navbar.close {
+  transform: translateX(-90%) !important;
+  width: 200px !important;
+  min-width: 0 !important;
+  overflow: hidden;
+  box-shadow: 10px 50px 50px 10px rgba(255, 255, 0, 0.404);
+}
+
+
+/* position: absolute;
+    z-index: -1;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; */

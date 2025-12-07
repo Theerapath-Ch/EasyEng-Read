@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono , Kanit  } from "next/font/google";
 import "./globals.css";
 import NavbarLeft from "@/components/home/NavbarLeft";
 
@@ -12,6 +12,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+const geistKanit = Kanit({
+  variable: "--font-kanit",
+  subsets: ["latin", "thai"],
+  weight: ["300", "400", "500", "600", "700"],
+});;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,12 +31,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={`${geistKanit.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <div className="flex">
-          <NavbarLeft />       {/* อยู่ทุกหน้า */}
-          <main className="flex-1 bg-white min-h-screen p-4">
-            {children}        {/* เนื้อหาแต่ละหน้า */}
+      <div className="md:flex gap-3 ">
+          <div className=" bg-amber-600  sticky z-0 ">
+            <div className="  absolute z-1 flex md:flex-col justify-center items-center w-full h-full">
+              <div>Romance</div>
+              <div>Scient</div>
+              <div>Technology</div>
+              <div>History</div>
+              <div>Generally</div>
+            </div>
+            <NavbarLeft  />       {/* อยู่ทุกหน้า */}
+          </div>
+          <main className="flex-1 bg-white min-h-screen w-auto">
+            {children}      
           </main>
         </div>
       </body>
