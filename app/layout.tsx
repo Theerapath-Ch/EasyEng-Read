@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono , Kanit  } from "next/font/google";
 import "./globals.css";
 import NavbarLeft from "@/components/home/NavbarLeft";
+import HiddentNav from "../components/home/HiddentNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,16 +35,12 @@ export default function RootLayout({
         className={`${geistKanit.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <div className="md:flex gap-3 ">
+         {/* อยู่ทุกหน้า */}
           <div className=" bg-amber-600  sticky z-0 ">
-            <div className="  absolute z-1 flex md:flex-col justify-center items-center w-full h-full">
-              <div>Romance</div>
-              <div>Scient</div>
-              <div>Technology</div>
-              <div>History</div>
-              <div>Generally</div>
-            </div>
-            <NavbarLeft  />       {/* อยู่ทุกหน้า */}
+            <HiddentNav />
+            <NavbarLeft  />     
           </div>
+            {/* อยู่ทุกหน้า */}
           <main className="flex-1 bg-white min-h-screen w-auto">
             {children}      
           </main>
@@ -52,3 +49,4 @@ export default function RootLayout({
     </html>
   );
 }
+            

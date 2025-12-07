@@ -1,14 +1,16 @@
 "use client";
 import "../../components/home/navbar.css";
 import { TableOfContents } from "lucide-react";
+import { Pentagon } from 'lucide-react';
 import { Facebook } from "lucide-react";
 import { Instagram } from "lucide-react";
 import { opentAndCloseNabar } from "./ts/opentAndCloseNabar";
 
+
 const NavbarLeft = () => {
   
   return (
-<div id="navbar" className=" sticky z-2 bg border-r-2 rounded-br-4xl md:rounded-br-full  md:border-r-4  md:h-dvh md:w-auto  md:flex md:justify-between  md:flex-col shadow-2xl  " onClick={() => opentAndCloseNabar("navbar")}>
+<div id="navbar" className=" sticky z-2 bg border-r-2 rounded-br-4xl md:rounded-br-full  md:border-r-4  md:h-dvh md:w-auto  md:flex md:justify-between  md:flex-col shadow-2xl  " >
       <div className=" text-center p-4 bgImage flex justify-center items-center shadow-xl" >
         <img
           className=""
@@ -18,8 +20,8 @@ const NavbarLeft = () => {
         <p className="text-lg ">EasyEng Read</p>
       </div>
 
-      <div  className="w-full h-full text-center  flex flex-col justify-center items-center " >
-        <TableOfContents color="black" size={25}   />
+      <div  className="w-full h-full text-center  flex flex-col justify-center items-center " onClick={() => opentAndCloseNabar("navbar")} >
+        <Pentagon color="black" size={30}   />
       </div>
 
       {/* <div className="w-full text-center text-2xl  rounded-t-lg bgBtn p-2 flex justify-center gap-2  ">
