@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import stories from './dataStory'
 
 
@@ -10,8 +11,8 @@ const NewStrory = () => {
             <div className=" sm:grid sm:grid-cols-1 md:grid md:grid-cols-2  lg:grid lg:grid-cols-3 xl:grid xl:grid-cols-4 2xl:grid 2xl:grid-cols-5  gap-6   ">
                 {stories.map((item) => {
                     return (
-                        //  hover:w-2xs
-                        <div className="w-3xs h-auto  flex justify-center flex-col " key={item.id}>
+                        <Link href={`/story/${item.level}/${item.id}`} key={item.id}>
+                            <div className="w-3xs h-auto  flex justify-center flex-col " >
                             <div className='mb-3 border-2 rounded-2xl  overflow-hidden'>
                                 <img src={item.img} alt="banner" className=" transition-transform duration-300  hover:scale-108" />
                             </div>
@@ -24,6 +25,7 @@ const NewStrory = () => {
                             year: "numeric",
                         })}</p> */}
                         </div>
+                        </Link>
                     )
                 })}
             </div>
