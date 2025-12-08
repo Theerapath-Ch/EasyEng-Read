@@ -6,29 +6,38 @@ type Category = {
 const category: Category[] = [
     {
         id: 1,
-        name: "Romance",
+        name: "Home",
         path:"/"
     },
     {
         id: 2,
-        name: "Scient",
-        path:"/"
+        name: "A1",
+        path:"/about"
     },
     {
         id: 3,
-        name: "Technology",
-        path:"/"
+        name: "A2",
+        path:"/a2"
     },
     {
         id: 4,
-        name: "History",
-        path:"/"
+        name: "B1",
+        path:"/b1"
     },
-    
     {
         id: 5,
-        name: "Generally",
-        path:"/"
+        name: "B2",
+        path:"/b2"
+    },
+    {
+        id: 6,
+        name: "C1",
+        path:"/c1"
+    },
+    {
+        id: 7,
+        name: "C2",
+        path:"/c2"
     },
     
 ]

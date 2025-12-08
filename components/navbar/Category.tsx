@@ -1,13 +1,17 @@
+import Link from 'next/link';
 import category from './category'
+import { usePathname } from 'next/navigation';
 
 const Catagory = () => {
-    // console.log(category);
+    const pathname = usePathname();
+    //console.log(pathname);
     return (
         <>
             <div className="text-center text-gray-700 flex  justify-center gap-6 items-center bo"  >
                 {category.map((item) => {
+                    const isActive = item.path === pathname;
                     return (
-                        <a key={item.id} href={item.path} className="relative border-b-4 border-amber-500 h-full flex items-center font-bold p-4">{item.name} <span className=" absolute right-0 h-fit">|</span></a>
+                        <Link href={item.path} key={item.id} className={`relative h-full flex items-center font-bold p-4 ${isActive ? " border-b-4 border-amber-500" : " border-none"}`}>{item.name} <span className=" absolute right-0 h-fit">|</span></Link>
                     )
                 })}
             </div>

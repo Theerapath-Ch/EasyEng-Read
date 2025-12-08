@@ -40,7 +40,7 @@ export default function RootLayout({
             <Navbar  />     
           </div>
             {/* อยู่ทุกหน้า */}
-          <main className="flex-1  min-h-screen w-full p-5 absolute mt-15  ">
+          <main className=" min-h-screen w-full p-5 absolute mt-15  ">
             {children}      
           </main>
         </div>

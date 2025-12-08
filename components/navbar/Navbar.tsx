@@ -17,6 +17,7 @@ const Navbar = () => {
           <img
             className=""
             src="../logo/logo1.png"
+            alt="logo"
             width={50}
           />
           <p className="lg:text-2xl lg:block hidden  ">EasyEng Read</p>
