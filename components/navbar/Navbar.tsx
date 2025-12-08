@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     // onClick={() => opentAndCloseNabar("navbar")}
-    <div id="navbar" className=" bg flex justify-between  shadow-2xl  px-5  "  >
+    <div id="navbar" className=" bg flex justify-between border-b-2 rounded-b-lg shadow-2xl  px-5  "  >
       <a href="/">
         <div className=" text-center flex justify-center items-center gap-3 px-3 py-1 " >
           <img
@@ -27,7 +27,7 @@ const Navbar = () => {
       <Catagory />
 
       <div>
-        <div className="border-r-6 border-amber-600 h-full absolute right-0"></div>
+        {/* <div className="border-r-6 border-amber-600 h-full absolute right-0 "></div> */}
       </div>
 
     </div>
