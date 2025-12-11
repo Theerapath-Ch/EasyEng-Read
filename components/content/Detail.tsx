@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Story } from "../main/dataStory"
 import { translate } from "@/app/api/translate";
-import { Row, Col, Card, Popover, Spin, Carousel } from "antd";
+import { Popover, Spin, } from "antd";
 
 const Detail = ({ storyProp }: { storyProp: Story }) => {
     const words = storyProp?.detail?.split(" ") || [];

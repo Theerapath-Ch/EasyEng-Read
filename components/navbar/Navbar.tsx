@@ -2,7 +2,6 @@
 import "./navbar.css";
 import { TableOfContents } from "lucide-react";
 import { Pentagon } from 'lucide-react';
-
 import { opentAndCloseNabar } from "../../utill/opentAndCloseNabar";
 import Catagory from "./Category";
 
@@ -11,7 +10,7 @@ const Navbar = () => {
 
   return (
     // onClick={() => opentAndCloseNabar("navbar")}
-    <div id="navbar" className=" bg flex justify-between border-b-2 rounded-b-lg shadow-2xl  px-5  "  >
+    <div id="navbar" className=" bg-gray-300 flex justify-between border-b-2 rounded-b-lg   px-5  "  >
       <a href="/">
         <div className=" text-center flex justify-center items-center gap-3 px-3 py-1 " >
           <img
@@ -23,9 +22,7 @@ const Navbar = () => {
           <p className="lg:text-2xl lg:block hidden  ">EasyEng Read</p>
         </div>
       </a>
-
       <Catagory />
-
       <div>
         {/* <div className="border-r-6 border-amber-600 h-full absolute right-0 "></div> */}
       </div>
