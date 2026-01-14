@@ -19,3 +19,29 @@ model users {
   name  String?
   email String?
 }
+
+
+enum StoryCategory {
+  MOTIVATION
+  LOVE
+  LIFE
+  SELF_HELP
+}
+enum StoryLevel {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
+}
+model story{
+  id Int @id @default(autoincrement())
+  name String
+  shortDesc String?
+  detail String? @db.Text
+  category StoryCategory 
+  createdAt  DateTime  @default(now())
+  updatedAt DateTime @updatedAt
+  level StoryLevel
+}

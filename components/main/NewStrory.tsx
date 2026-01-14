@@ -1,6 +1,6 @@
+
 import Link from 'next/link';
 import { stories } from './dataStory'
-
 import { CardContent } from "@/components/ui/card"
 import {
     Carousel,
@@ -9,9 +9,13 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
+import { Story } from './dataStory';
 
-const NewStrory = () => {
-    //console.log(stories);
+
+
+const NewStrory = ({ data }: { data: Story[] }) => {
+    console.log("data", data);
+
     return (
         <div className='p-4 flex flex-col justify-center  items-center '>
             <div className=" text-4xl font-bold mb-5 w-full"> ⚡New Story <hr className='mt-3' /></div>

@@ -1,7 +1,7 @@
 export type Story = {
     id: number,
     name: string,
-    shot: string,
+    shot?: string,
     detail: string,
     category: string, 
     img:string ,
