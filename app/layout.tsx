@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono , Kanit  } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
 
 
 const geistSans = Geist({
@@ -34,7 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistKanit.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <div className="">
+      <div className="flex flex-col justify-between">
          {/* อยู่ทุกหน้า */}
           <div className=" fixed z-99 w-full ">
             <Navbar  />     
@@ -42,6 +43,7 @@ export default function RootLayout({
             {/* อยู่ทุกหน้า */}
           <main className=" min-h-screen w-full pt-5 absolute md:mt-12 mt-7 ">
             {children}      
+            <Footer />
           </main>
         </div>
       </body>

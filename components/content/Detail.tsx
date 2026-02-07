@@ -4,7 +4,10 @@ import { Story } from "../main/dataStory"
 import { translate } from "@/app/api/translate";
 import { Popover, Spin, } from "antd";
 
+
 const Detail = ({ storyProp }: { storyProp: Story }) => {
+
+
     const words = storyProp?.detail?.split(" ") || [];
 
     const [translated, setTranslated] = useState("");
@@ -14,7 +17,7 @@ const Detail = ({ storyProp }: { storyProp: Story }) => {
     // const [clickWord, setClickWord] = useState(null)
 
     const handleTranslate = async (word: string) => {
-        
+
         try {
             setIsLoading(true);
             setTranslated("");
@@ -29,9 +32,18 @@ const Detail = ({ storyProp }: { storyProp: Story }) => {
     }
 
     return (
-        <>
-            <div className=" border-2 p-10 flex justify-center items-center  md:text-lg text-wrap leading-9 break-all tracking-wider whitespace-pre-wrap w-full ">
-                <div className="w-full">
+        <div className="w-full flex justify-center px-3 md:px-6 mt-10">
+            <div className="w-full  rounded-3xl overflow-hidden
+    backdrop-blur-xl bg-white/70 border border-white/30 shadow-2xl">
+
+                
+                {/* Reading Area */}
+                <div className="
+      p-6 md:p-10
+      text-gray-800
+      text-base md:text-lg
+      leading-8 md:leading-10
+    ">
                     {words.map((word, index) => (
                         <React.Fragment key={index}>
                             <Popover
@@ -39,23 +51,38 @@ const Detail = ({ storyProp }: { storyProp: Story }) => {
                                     isLoading ? (
                                         <Spin />
                                     ) : (
-                                        <p>{translated}</p>
+                                        <p className="max-w-xs">{translated}</p>
                                     )
                                 }
                                 trigger="click"
                             >
                                 <span
-                                    className="px-1 cursor-pointer hover:bg-yellow-200 rounded"
                                     onClick={() => handleTranslate(word)}
+                                    className="
+                inline-block
+                px-[3px] py-[2px]
+                cursor-pointer
+                rounded-md
+                transition
+                hover:bg-yellow-200/70
+              "
                                 >
                                     {word}
                                 </span>
-                            </Popover>
+                            </Popover>{" "}
                         </React.Fragment>
                     ))}
                 </div>
+                {/* Gradient line */}
+                <div className="h-[3px] w-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400"></div>
+
             </div>
-        </>
+
+                {/* <div className="h-[3px] w-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400"></div> */}
+
+        </div>
+        
+
     )
 }
 
