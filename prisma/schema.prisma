@@ -35,13 +35,19 @@ enum StoryLevel {
   C1
   C2
 }
+enum Status {
+  E
+  D
+}
+
 model story{
   id Int @id @default(autoincrement())
   name String
-  shortDesc String?
+  shortDesc String? 
   detail String? @db.Text
   category StoryCategory 
   createdAt  DateTime  @default(now())
   updatedAt DateTime @updatedAt
   level StoryLevel
+  status Status @default(E) 
 }
