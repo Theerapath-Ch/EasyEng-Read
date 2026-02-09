@@ -12,7 +12,7 @@ export const stories: Story[] = [
     {
         id: 1,
         name: "The Little Blue Bird",
-        shot: "There was a little blue bird. Her name was Luna. Luna lived in a big green tree near a small village.",
+        shot: "There was a little blue bird. Her name was Luna's. Luna lived in a big green tree near a small village.",
         detail: `There was a little blue bird. Her name was Luna. Luna lived in a big green tree near a small village.
 
 Every morning, Luna woke up early. She opened her wings and looked at the bright sky. Then she sang a happy song, and all the animals liked her song.
