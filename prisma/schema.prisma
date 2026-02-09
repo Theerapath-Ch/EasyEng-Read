@@ -44,18 +44,40 @@ model story {
   id           Int           @id @default(autoincrement())
   name         String
   category     StoryCategory
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  created_at   DateTime      @default(now())
+  updated_at   DateTime?     @updatedAt
   level        StoryLevel
   status       Status        @default(E)
+
   storydetails storydetail[]
 }
 
 model storydetail {
   id        Int     @id @default(autoincrement())
   idstory   Int
-  shortDesc String?
+  shortdesc String?
   detail    String? @db.Text
-  
+
   story     story   @relation(fields: [idstory], references: [id], onDelete: Cascade)
+  questions question[]
+}
+
+model question {
+  id            Int         @id @default(autoincrement())
+  question      String
+  explanation   String?     @db.Text
+
+  storyDetailId Int
+  storydetail   storydetail @relation(fields: [storyDetailId], references: [id], onDelete: Cascade)
+
+  choices       choice[]
+}
+
+model choice {
+  id         Int      @id @default(autoincrement())
+  text       String
+  isCorrect  Boolean  @default(false)
+
+  questionId Int
+  question   question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 }
