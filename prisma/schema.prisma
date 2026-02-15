@@ -40,44 +40,44 @@ enum Status {
   D
 }
 
-
 model story {
-  id           Int           @id @default(autoincrement())
-  name         String
-  category     StoryCategory
-  created_at   DateTime      @default(now())
-  updated_at   DateTime?     @updatedAt
-  level        StoryLevel
-  status       Status        @default(E)
-  
+  id         Int           @id @default(autoincrement())
+  name       String
+  category   StoryCategory
+  created_at DateTime      @default(now())
+  updated_at DateTime?     @updatedAt
+  level      StoryLevel
+  status     Status        @default(E)
+
   storydetails storydetail[]
 }
 
 model storydetail {
-  id        Int     @id @default(autoincrement())
-  idstory   Int
-  shortdesc String?
-  detail    String? @db.Text
+  id         Int     @id @default(autoincrement())
+  idstory    Int
+  shortdesc  String?
+  detail     String? @db.Text
+  vocabulary String? @db.Text
 
-  story     story   @relation(fields: [idstory], references: [id], onDelete: Cascade)
+  story     story      @relation(fields: [idstory], references: [id], onDelete: Cascade)
   questions question[]
 }
 
 model question {
-  id            Int         @id @default(autoincrement())
-  question      String
-  explanation   String?     @db.Text
+  id          Int     @id @default(autoincrement())
+  question    String
+  explanation String? @db.Text
 
   storyDetailId Int
   storydetail   storydetail @relation(fields: [storyDetailId], references: [id], onDelete: Cascade)
 
-  choices       choice[]
+  choices choice[]
 }
 
 model choice {
-  id         Int      @id @default(autoincrement())
-  text       String
-  isCorrect  Boolean  @default(false)
+  id        Int     @id @default(autoincrement())
+  text      String
+  isCorrect Boolean @default(false)
 
   questionId Int
   question   question @relation(fields: [questionId], references: [id], onDelete: Cascade)
