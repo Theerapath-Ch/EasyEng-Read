@@ -34,9 +34,6 @@ const Detail = ({ storyProp }: { storyProp: Story }) => {
 
     return (
         <>
-            <div className="border-2 border-amber-300 w-auto">
-                <Voice />
-            </div>
             <div className="w-full flex justify-center px-3 md:px-6 mt-10">
                 <div className="w-full  rounded-3xl overflow-hidden
     backdrop-blur-xl bg-white/70 border border-white/30 shadow-2xl">

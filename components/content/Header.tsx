@@ -1,4 +1,6 @@
+'use client'
 import { Story } from "../../utill/dataStory";
+import Voice from "./Voice";
 
 const Header = ({ storyProp }: { storyProp: Story }) => {
     //console.log(storyProp);
@@ -74,14 +76,14 @@ const Header = ({ storyProp }: { storyProp: Story }) => {
                     </div>
 
                     {/* 🎯 Action Buttons */}
-                    <div className="flex gap-4 mt-8">
+                    {/* <div className="flex gap-4 mt-8">
                         <button className="px-6 py-3 rounded-xl bg-purple-600 text-white font-semibold shadow-lg hover:scale-105 transition">
                             Start Reading
                         </button>
                         <button className="px-6 py-3 rounded-xl border border-gray-300 font-semibold hover:bg-gray-50">
                             Save Story
                         </button>
-                    </div>
+                    </div> */}
 
                     {/* 🧠 Keywords */}
                     <div className="mt-8">
@@ -98,13 +100,10 @@ const Header = ({ storyProp }: { storyProp: Story }) => {
                         </div>
                     </div>
 
-                    {/* 👤 Author */}
-                    <div className="mt-8 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gray-300" />
-                        <div>
-                            <p className="font-semibold">Written by Luna Library</p>
-                            <p className="text-sm text-gray-500">Story for English learners</p>
-                        </div>
+                    {/* voice */}
+                    <div className="mt-4">
+                        <p className="text-gray-500 mb-2">Voice</p>
+                        <Voice />
                     </div>
 
                 </div>

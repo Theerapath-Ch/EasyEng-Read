@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+
 
 
 const Voice = () => {
@@ -6,49 +7,122 @@ const Voice = () => {
     Every morning, Luna woke up early. She opened her wings and looked at the bright sky. Then she sang a happy song, and all the animals liked her song.
     `;
     const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+    const [time, setTime] = useState(0);
+
+    // ▶ START TIMER
+    const startTimer = () => {
+        // console.log(timerRef.current);
+
+        if (timerRef.current) return; // กันซ้อน  
+
+        timerRef.current = setInterval(() => {
+            setTime((t) => t + 1);
+        }, 1000);
+    };
+
+    // ⏸ PAUSE TIMER
+    const pauseTimer = () => {
+        // console.log(timerRef.current);
+        if (timerRef.current) {
+            clearInterval(timerRef.current);
+            timerRef.current = null;
+        }
+    };
+
+    // ⏹ RESET TIMER
+    const resetTimer = () => {
+        pauseTimer();
+        setTime(0);
+    };
+
+    // ▶ PLAY
     const play = () => {
         const utter = new SpeechSynthesisUtterance(text);
         utter.lang = "en-US";
-        
+
+        // resume จาก pause
         if (speechSynthesis.speaking) {
             if (speechSynthesis.paused) {
                 speechSynthesis.resume();
+                startTimer();
             }
             return;
         }
-        // ⭐ ถ้ายังไม่เคยสร้างเสียง
+
+        // ยังไม่เคยเล่น
         if (!utterRef.current) {
             utter.onend = () => {
-                utterRef.current = null; // reset หลังพูดจบ
+                utterRef.current = null;
+                resetTimer(); // auto reset เมื่อพูดจบ
             };
 
             utterRef.current = utter;
             speechSynthesis.speak(utter);
+            startTimer();
         }
     };
 
+    // ⏸ PAUSE
     const pause = () => {
         if (speechSynthesis.speaking && !speechSynthesis.paused) {
             speechSynthesis.pause();
+            pauseTimer();
         }
     };
 
+    // ⏹ STOP
     const stop = () => {
         speechSynthesis.cancel();
-        utterRef.current = null; // reset
+        utterRef.current = null;
+        resetTimer();
+    };
+
+    // format mm:ss
+    const formatTime = () => {
+        const m = String(Math.floor(time / 60)).padStart(2, "0");
+        const s = String(time % 60).padStart(2, "0");
+        return `${m}:${s}`;
     };
 
     return (
-        <div style={{ display: "flex", gap: 10 }}>
-            <button onClick={play}>▶ Play</button>
-            <button onClick={pause}>⏸ Pause</button>
-            <button onClick={stop}>⏹ Stop</button>
+        <div className="flex items-center gap-3 p-2 rounded-2xl w-fit">
+            <button
+                onClick={play}
+                className="px-4 py-1 rounded-xl bg-green-500 hover:bg-green-400 
+               text-white font-semibold shadow-md hover:scale-105 
+               active:scale-95 transition"
+            >
+                ▶ Play
+            </button>
+
+            <button
+                onClick={pause}
+                className="px-4 py-1 rounded-xl bg-yellow-500 hover:bg-yellow-400 
+               text-white font-semibold shadow-md hover:scale-105 
+               active:scale-95 transition"
+            >
+                ⏸ Pause
+            </button>
+
+            <button
+                onClick={stop}
+                className="px-4 py-1 rounded-xl bg-red-500 hover:bg-red-400 
+               text-white font-semibold shadow-md hover:scale-105 
+               active:scale-95 transition"
+            >
+                ⏹ Stop
+            </button>
+            <div className="text-xl font-bold">{formatTime()}</div>
+
         </div>
+
     );
 };
 
 export default Voice
+
 
 
 const testT = `There was a little blue bird. Her name was Luna. Luna lived in a big green tree near a small village.
