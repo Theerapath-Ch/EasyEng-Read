@@ -12,7 +12,7 @@ const category: Category[] = [
     {
         id: 2,
         name: "A1",
-        path:"/about"
+        path:"/a1"
     },
     {
         id: 3,
