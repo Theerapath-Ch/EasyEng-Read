@@ -1,5 +1,5 @@
-import NewStrory from "@/components/main/NewStrory";
-import PopularStory from "@/components/main/PopularStory";
+import NewStrory from "@/components/home/NewStrory";
+import PopularStory from "@/components/home/PopularStory";
 
 export default function Home() {
   return (

@@ -1,8 +1,9 @@
 'use client'
 import React, { useState } from "react";
-import { Story } from "../main/dataStory"
+import { Story } from "../../utill/dataStory"
 import { translate } from "@/app/api/translate";
 import { Popover, Spin, } from "antd";
+import Voice from "./Voice";
 
 
 const Detail = ({ storyProp }: { storyProp: Story }) => {
@@ -32,33 +33,37 @@ const Detail = ({ storyProp }: { storyProp: Story }) => {
     }
 
     return (
-        <div className="w-full flex justify-center px-3 md:px-6 mt-10">
-            <div className="w-full  rounded-3xl overflow-hidden
+        <>
+            <div className="border-2 border-amber-300 w-auto">
+                <Voice />
+            </div>
+            <div className="w-full flex justify-center px-3 md:px-6 mt-10">
+                <div className="w-full  rounded-3xl overflow-hidden
     backdrop-blur-xl bg-white/70 border border-white/30 shadow-2xl">
 
-                
-                {/* Reading Area */}
-                <div className="
+
+                    {/* Reading Area */}
+                    <div className="
       p-6 md:p-10
       text-gray-800
       text-base md:text-lg
       leading-8 md:leading-10
     ">
-                    {words.map((word, index) => (
-                        <React.Fragment key={index}>
-                            <Popover
-                                content={
-                                    isLoading ? (
-                                        <Spin />
-                                    ) : (
-                                        <p className="max-w-xs">{translated}</p>
-                                    )
-                                }
-                                trigger="click"
-                            >
-                                <span
-                                    onClick={() => handleTranslate(word)}
-                                    className="
+                        {words.map((word, index) => (
+                            <React.Fragment key={index}>
+                                <Popover
+                                    content={
+                                        isLoading ? (
+                                            <Spin />
+                                        ) : (
+                                            <p className="max-w-xs">{translated}</p>
+                                        )
+                                    }
+                                    trigger="click"
+                                >
+                                    <span
+                                        onClick={() => handleTranslate(word)}
+                                        className="
                 inline-block
                 px-[3px] py-[2px]
                 cursor-pointer
@@ -66,22 +71,24 @@ const Detail = ({ storyProp }: { storyProp: Story }) => {
                 transition
                 hover:bg-yellow-200/70
               "
-                                >
-                                    {word}
-                                </span>
-                            </Popover>{" "}
-                        </React.Fragment>
-                    ))}
-                </div>
-                {/* Gradient line */}
-                <div className="h-[3px] w-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400"></div>
+                                    >
+                                        {word}
+                                    </span>
+                                </Popover>{" "}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                    {/* Gradient line */}
+                    <div className="h-[3px] w-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400"></div>
 
-            </div>
+                </div>
 
                 {/* <div className="h-[3px] w-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400"></div> */}
 
-        </div>
-        
+            </div>
+        </>
+
+
 
     )
 }

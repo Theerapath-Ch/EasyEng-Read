@@ -1,4 +1,4 @@
-import { Story } from "../main/dataStory";
+import { Story } from "../../utill/dataStory";
 
 const Header = ({ storyProp }: { storyProp: Story }) => {
     //console.log(storyProp);

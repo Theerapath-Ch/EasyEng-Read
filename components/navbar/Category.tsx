@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import category from './category'
+import category from '../../utill/category';
 import { usePathname } from 'next/navigation';
 
 const Catagory = () => {
@@ -23,7 +23,7 @@ const Catagory = () => {
             ${isActive
                                         ? "text-white"
                                         : "text-gray-700 hover:text-purple-700"}
-          `}
+            `}
                             >
                                 {/* Active background */}
                                 {isActive && (

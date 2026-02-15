@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { stories } from './dataStory'
+import { stories } from '../../utill/dataStory'
 
 import { CardContent } from "@/components/ui/card"
 import {

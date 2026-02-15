@@ -40,6 +40,7 @@ enum Status {
   D
 }
 
+
 model story {
   id           Int           @id @default(autoincrement())
   name         String
@@ -48,7 +49,7 @@ model story {
   updated_at   DateTime?     @updatedAt
   level        StoryLevel
   status       Status        @default(E)
-
+  
   storydetails storydetail[]
 }
 

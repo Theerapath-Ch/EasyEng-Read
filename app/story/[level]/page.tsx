@@ -1,4 +1,4 @@
-import NewStrory from "@/components/main/NewStrory";
+import NewStrory from "@/components/home/NewStrory";
 
 
 const page = async () => {

@@ -1,10 +1,8 @@
 "use client";
-import "./navbar.css";
 
-import { TableOfContents } from "lucide-react";
-import { Pentagon } from 'lucide-react';
-import { opentAndCloseNabar } from "../../utill/opentAndCloseNabar";
-import Catagory from "./Category";
+
+
+import Catagory from "../navbar/Category";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 

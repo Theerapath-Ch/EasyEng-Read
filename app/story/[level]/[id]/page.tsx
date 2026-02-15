@@ -1,6 +1,6 @@
 
 
-import { stories } from "@/components/main/dataStory";
+import { stories } from "@/utill/dataStory";
 import "../../../globals.css"
 import { translate } from "@/app/api/translate";
 import Header from "@/components/content/Header";
