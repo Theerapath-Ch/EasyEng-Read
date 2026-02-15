@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from "react";
+import { Story } from "../../utill/dataStory"
 
 type Choice = {
     text: string;
@@ -42,7 +43,7 @@ const questions: QuestionType[] = [
     },
 ];
 
-const Question = () => {
+const Question = ({storyProp} : {storyProp: Story}) => {
     const [selected, setSelected] = useState<number | null>(null);
     const [current, setCurrent] = useState(0);
     const [score, setScore] = useState(0);

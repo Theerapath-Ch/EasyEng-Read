@@ -2,15 +2,16 @@
 import { Story } from "../../utill/dataStory";
 import Voice from "./Voice";
 
+const wrap_box = `mt-6 mx-3 md:mx-6 rounded-3xl overflow-hidden backdrop-blur-xl bg-white/70 border border-white/30 shadow-2xl` ;
+const titleText = `text-3xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-purple-700 via-pink-600 to-orange-500  bg-clip-text text-transparent` ;
+const box = `p-5 md:p-10 flex flex-col lg:flex-row gap-8 lg:gap-12` ;
+const capsule = `px-4 py-2 rounded-full bg-white shadow border border-gray-100` ;
+
+
 const Header = ({ storyProp }: { storyProp: Story }) => {
-    //console.log(storyProp);
-
     return (
-        <div className="mt-6 mx-3 md:mx-6 rounded-3xl overflow-hidden
-  backdrop-blur-xl bg-white/70 border border-white/30 shadow-2xl">
-
-            <div className="p-5 md:p-10 flex flex-col lg:flex-row gap-8 lg:gap-12">
-
+        <div className={wrap_box}>
+            <div className={box}>
                 {/* Image */}
                 <div className="lg:w-[420px] w-full flex-shrink-0">
                     <img
@@ -19,15 +20,11 @@ const Header = ({ storyProp }: { storyProp: Story }) => {
                         className="w-full h-full object-cover rounded-2xl shadow-lg"
                     />
                 </div>
-
                 {/* Content */}
                 <div className="flex flex-col justify-between flex-1">
-
-                    {/* Title + Abstract */}
+                {/* Title + Abstract */}
                     <div className="space-y-4">
-                        <h1 className="text-3xl md:text-5xl font-extrabold leading-tight
-          bg-gradient-to-r from-purple-700 via-pink-600 to-orange-500 
-          bg-clip-text text-transparent">
+                        <h1 className={titleText}>
                             {storyProp?.name}
                         </h1>
 
@@ -48,17 +45,17 @@ const Header = ({ storyProp }: { storyProp: Story }) => {
 
                     {/* Meta Info Chips */}
                     <div className="mt-6 flex flex-wrap gap-3 text-sm md:text-base">
-                        <div className="px-4 py-2 rounded-full bg-white shadow border border-gray-100">
+                        <div className={capsule}>
                             <span className="text-gray-500">Category:</span>{" "}
                             <span className="font-semibold">{storyProp?.category}</span>
                         </div>
 
-                        <div className="px-4 py-2 rounded-full bg-white shadow border border-gray-100">
+                        <div className={capsule}>
                             <span className="text-gray-500">Level:</span>{" "}
                             <span className="font-semibold">{storyProp?.level}</span>
                         </div>
 
-                        <div className="px-4 py-2 rounded-full bg-white shadow border border-gray-100">
+                        <div  className={capsule}>
                             <span className="text-gray-500">Date:</span>{" "}
                             <span className="font-semibold">
                                 {storyProp?.date?.toLocaleDateString("en-GB", {
@@ -69,7 +66,7 @@ const Header = ({ storyProp }: { storyProp: Story }) => {
                             </span>
                         </div>
 
-                        <div className="px-4 py-2 rounded-full bg-white shadow border border-gray-100">
+                        <div  className={capsule}>
                             <span className="text-gray-500">Readers:</span>{" "}
                             <span className="font-semibold">11K</span>
                         </div>

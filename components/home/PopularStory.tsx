@@ -9,67 +9,67 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
+import { 
+    textHead,
+    lineBottom ,
+    carousel,
+    carouselContent,
+    wrapCardContent,
+    card,
+    Gradient_line,
+    img,
+    bgPic,
+    levelOnpic,
+    textName,
+    glow
+} from './homeStyle';
 
 const PopularStory = () => {
     //console.log(stories);
     return (
-        <div className=' '>
+        <>
             <div className="w-full max-w-7xl mx-auto mb-4 md:mb-6 px-2 md:px-0">
                 <div className="flex items-center gap-3">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold bg-clip-text">
+                    <h2 className={textHead}>
                         🔥 Popular
                     </h2>
                 </div>
 
-                <div className="mt-2 md:mt-3 h-[2px] w-full bg-gradient-to-r 
-    from-purple-600/40 via-pink-500/40 to-orange-400/40 rounded-full"></div>
+                <div className={lineBottom}></div>
             </div>
-            <Carousel className="w-full max-w-7xl mx-auto px-2 md:px-0">
-                <CarouselContent className="-ml-2 md:-ml-4 p-2">
+            <Carousel className={carousel}>
+                <CarouselContent className={carouselContent}>
                     {stories.map((item) => (
                         <CarouselItem
                             key={item.id}
-                            className="
-    pl-2 md:pl-4
-    basis-full
-    sm:basis-1/2
-    lg:basis-1/3
-    xl:basis-1/4
-  "
-                        >
+                            className={wrapCardContent} >
                             <CardContent className="p-0">
                                 <Link href={`/story/${item.level}/${item.id}`}>
-                                    <div className="group relative rounded-2xl overflow-hidden 
-        backdrop-blur-xl bg-white/60 border border-white/30 
-        shadow-md md:shadow-lg hover:shadow-2xl transition-all duration-500">
+                                    <div className={card}>
 
-                                        {/* Gradient top line (เหมือน navbar) */}
-                                        <div className="h-[3px] w-full bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400"></div>
+                                        {/* Gradient_line*/}
+                                        <div className={Gradient_line}></div>
 
                                         {/* Image */}
                                         <div className="relative overflow-hidden h-40 sm:h-44 md:h-52">
                                             <img
                                                 src={item.img}
                                                 alt={item.name}
-                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                className={img}
                                             />
 
                                             {/* overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                                            <div className={bgPic}></div>
 
                                             {/* Level badge */}
-                                            <span className="absolute top-2 right-2 md:top-3 md:right-3 
-            px-2 md:px-3 py-1 text-[10px] md:text-xs font-semibold
-            rounded-full bg-white/80 backdrop-blur text-orange-500 shadow">
+                                            <span className={levelOnpic}>
                                                 Level {item.level}
                                             </span>
                                         </div>
 
                                         {/* Text */}
                                         <div className="p-3 md:p-4 space-y-1">
-                                            <p className="text-base md:text-lg font-extrabold tracking-wide 
-            bg-gradient-to-r from-purple-700 via-pink-600 to-orange-500 
-            bg-clip-text text-transparent line-clamp-1">
+                                            <p className={textName}>
                                                 {item.name}
                                             </p>
 
@@ -79,9 +79,7 @@ const PopularStory = () => {
                                         </div>
 
                                         {/* Glow hover */}
-                                        <div className="absolute -inset-1 opacity-0 group-hover:opacity-30 
-          blur-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 
-          transition duration-500"></div>
+                                        <div className={glow}></div>
                                     </div>
                                 </Link>
                             </CardContent>
@@ -93,7 +91,7 @@ const PopularStory = () => {
                 <CarouselNext className="hidden md:flex border-none shadow-md hover:shadow-lg bg-white/80 backdrop-blur" />
 
             </Carousel>
-        </div>
+        </>
 
     )
 };
