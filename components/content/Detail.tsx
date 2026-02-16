@@ -1,12 +1,12 @@
 'use client'
 import React, { useState } from "react";
-import { Story } from "../../utill/dataStory"
+import { story } from "@prisma/client";
 import { translate } from "@/app/api/translate";
 import { Popover, Spin, } from "antd";
-import Voice from "./Voice";
 
 
-const Detail = ({ storyProp }: { storyProp: Story }) => {
+
+const Detail = ({ storyProp }: { storyProp: story }) => {
 
 
     const words = storyProp?.detail?.split(" ") || [];

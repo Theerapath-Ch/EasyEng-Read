@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from "react";
-import { Story } from "../../utill/dataStory"
+import { story } from "@prisma/client";
 
 type Choice = {
     text: string;
@@ -43,7 +43,7 @@ const questions: QuestionType[] = [
     },
 ];
 
-const Question = ({storyProp} : {storyProp: Story}) => {
+const Question = ({storyProp} : {storyProp: story}) => {
     const [selected, setSelected] = useState<number | null>(null);
     const [current, setCurrent] = useState(0);
     const [score, setScore] = useState(0);

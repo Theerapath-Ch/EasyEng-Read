@@ -1,5 +1,5 @@
 'use client'
-import { Story } from "../../utill/dataStory";
+import { story } from "@prisma/client";
 import Voice from "./Voice";
 
 const wrap_box = `mt-6 mx-3 md:mx-6 rounded-3xl overflow-hidden backdrop-blur-xl bg-white/70 border border-white/30 shadow-2xl` ;
@@ -8,14 +8,16 @@ const box = `p-5 md:p-10 flex flex-col lg:flex-row gap-8 lg:gap-12` ;
 const capsule = `px-4 py-2 rounded-full bg-white shadow border border-gray-100` ;
 
 
-const Header = ({ storyProp }: { storyProp: Story }) => {
+const Header = ({ storyProp }: { storyProp: story }) => {
+    console.log(storyProp);
+    
     return (
         <div className={wrap_box}>
             <div className={box}>
                 {/* Image */}
                 <div className="lg:w-[420px] w-full flex-shrink-0">
                     <img
-                        src="/story/test1.jpg"
+                        src={`../../story/${storyProp.level}/${storyProp.id}.jpg`}
                         alt="story"
                         className="w-full h-full object-cover rounded-2xl shadow-lg"
                     />
