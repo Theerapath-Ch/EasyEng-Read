@@ -9,7 +9,7 @@ import { Popover, Spin, } from "antd";
 const Detail = ({ storyProp }: { storyProp: story }) => {
 
 
-    const words = storyProp?.detail?.split(" ") || [];
+    const words = storyProp.storydetails[0].detail?.split(" ") || [] ;
 
     const [translated, setTranslated] = useState("");
     // const [clickWord, setClickWord] = useState("");
@@ -46,7 +46,7 @@ const Detail = ({ storyProp }: { storyProp: story }) => {
       text-base md:text-lg
       leading-8 md:leading-10
     ">
-                        {words.map((word, index) => (
+                        {words.map((word:string, index: number) => (
                             <React.Fragment key={index}>
                                 <Popover
                                     content={

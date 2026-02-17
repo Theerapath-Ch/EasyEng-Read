@@ -9,7 +9,9 @@ const capsule = `px-4 py-2 rounded-full bg-white shadow border border-gray-100` 
 
 
 const Header = ({ storyProp }: { storyProp: story }) => {
-    console.log(storyProp);
+    // console.log("storyProp : ",storyProp.storydetails[0].detail);
+    const vocabulary = storyProp.storydetails[0].vocabulary.split(",")
+    // console.log(vocabulary);
     
     return (
         <div className={wrap_box}>
@@ -31,7 +33,7 @@ const Header = ({ storyProp }: { storyProp: story }) => {
                         </h1>
 
                         <p className="text-gray-700 text-base md:text-lg leading-relaxed max-w-3xl">
-                            {storyProp?.shot}
+                            {storyProp.storydetails[0].shortdesc}
                         </p>
                     </div>
 
@@ -48,19 +50,19 @@ const Header = ({ storyProp }: { storyProp: story }) => {
                     {/* Meta Info Chips */}
                     <div className="mt-6 flex flex-wrap gap-3 text-sm md:text-base">
                         <div className={capsule}>
-                            <span className="text-gray-500">Category:</span>{" "}
+                            <span className="text-gray-500 mr-1">Category:</span>{" "}
                             <span className="font-semibold">{storyProp?.category}</span>
                         </div>
 
                         <div className={capsule}>
-                            <span className="text-gray-500">Level:</span>{" "}
+                            <span className="text-gray-500 mr-1">Level:</span>{" "}
                             <span className="font-semibold">{storyProp?.level}</span>
                         </div>
 
                         <div  className={capsule}>
-                            <span className="text-gray-500">Date:</span>{" "}
+                            <span className="text-gray-500 mr-1">Date:</span>{" "}
                             <span className="font-semibold">
-                                {storyProp?.date?.toLocaleDateString("en-GB", {
+                                {storyProp?.created_at?.toLocaleDateString("en-GB", {
                                     day: "2-digit",
                                     month: "2-digit",
                                     year: "numeric",
@@ -68,10 +70,10 @@ const Header = ({ storyProp }: { storyProp: story }) => {
                             </span>
                         </div>
 
-                        <div  className={capsule}>
-                            <span className="text-gray-500">Readers:</span>{" "}
+                        {/* <div  className={capsule}>
+                            <span className="text-gray-500 mr-1">Readers:</span>{" "}
                             <span className="font-semibold">11K</span>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* 🎯 Action Buttons */}
@@ -88,9 +90,9 @@ const Header = ({ storyProp }: { storyProp: story }) => {
                     <div className="mt-8">
                         <p className="text-gray-500 mb-2">Key Words</p>
                         <div className="flex flex-wrap gap-2">
-                            {["village", "kind", "lost", "friendship"].map((tag) => (
+                            {vocabulary.map((tag:string , i:number) => (
                                 <span
-                                    key={tag}
+                                    key={i}
                                     className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm"
                                 >
                                     {tag}
@@ -102,7 +104,7 @@ const Header = ({ storyProp }: { storyProp: story }) => {
                     {/* voice */}
                     <div className="mt-4">
                         <p className="text-gray-500 mb-2">Voice</p>
-                        <Voice />
+                        <Voice propVoice={storyProp.storydetails[0].detail} />
                     </div>
 
                 </div>

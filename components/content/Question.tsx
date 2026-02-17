@@ -4,46 +4,49 @@ import { story } from "@prisma/client";
 
 type Choice = {
     text: string;
-    correct: boolean;
+    isCorrect: boolean;
 };
 
 type QuestionType = {
     question: string;
-    choices: Choice[];
     explanation: string;
+    choices: Choice[];
 };
 
-const questions: QuestionType[] = [
-    {
-        question: "Where did Luna live?",
-        choices: [
-            { text: "In a small red house", correct: false },
-            { text: "In a big green tree", correct: true },
-            { text: "Near the river", correct: false },
-        ],
-        explanation: "Luna lived in a big green tree near a small village.",
-    },
-    {
-        question: "Why was the cat sad?",
-        choices: [
-            { text: "He was hungry", correct: false },
-            { text: "He was lost", correct: true },
-            { text: "He was sick", correct: false },
-        ],
-        explanation: "The cat said he was lost and could not find his home.",
-    },
-    {
-        question: "What did Luna do to help the cat?",
-        choices: [
-            { text: "She sang a song", correct: false },
-            { text: "She looked for the cat’s home from the sky", correct: true },
-            { text: "She called other animals", correct: false },
-        ],
-        explanation: "Luna flew high and searched until she found the red house.",
-    },
-];
+// const questionst: QuestionType[] = [
+//     {
+//         question: "Where did Luna live?",
+//         choices: [
+//             { text: "In a small red house", correct: false },
+//             { text: "In a big green tree", correct: true },
+//             { text: "Near the river", correct: false },
+//         ],
+//         explanation: "Luna lived in a big green tree near a small village.",
+//     },
+//     {
+//         question: "Why was the cat sad?",
+//         choices: [
+//             { text: "He was hungry", correct: false },
+//             { text: "He was lost", correct: true },
+//             { text: "He was sick", correct: false },
+//         ],
+//         explanation: "The cat said he was lost and could not find his home.",
+//     },
+//     {
+//         question: "What did Luna do to help the cat?",
+//         choices: [
+//             { text: "She sang a song", correct: false },
+//             { text: "She looked for the cat’s home from the sky", correct: true },
+//             { text: "She called other animals", correct: false },
+//         ],
+//         explanation: "Luna flew high and searched until she found the red house.",
+//     },
+// ];
 
 const Question = ({storyProp} : {storyProp: story}) => {
+    // console.log(storyProp.storydetails[0].questions);
+    const questions:QuestionType[] = storyProp.storydetails[0].questions ;
+
     const [selected, setSelected] = useState<number | null>(null);
     const [current, setCurrent] = useState(0);
     const [score, setScore] = useState(0);
@@ -86,16 +89,16 @@ const Question = ({storyProp} : {storyProp: story}) => {
             <p className="text-lg md:text-xl font-semibold mb-6">{q.question}</p>
 
             <div className="flex flex-col gap-4">
-                {q.choices.map((choice, index) => {
+                {q.choices.map((choice: Choice, index : number) => {
                     const isSelected = selected === index;
-                    const correct = choice.correct;
+                    const correct = choice.isCorrect;
 
                     return (
                         <button
                             key={index}
                             onClick={() => handleSelect(index, correct)}
                             className={`p-4 rounded-xl border text-left transition-all duration-300
-                ${isSelected
+                            ${isSelected
                                     ? correct
                                         ? "bg-green-100 border-green-400"
                                         : "bg-red-100 border-red-400"
